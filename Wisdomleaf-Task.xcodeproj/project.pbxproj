@@ -12,6 +12,12 @@
 		4EFE557D29F24E1E0016C3BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE557C29F24E1E0016C3BB /* Assets.xcassets */; };
 		4EFE558029F24E1E0016C3BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EFE557E29F24E1E0016C3BB /* LaunchScreen.storyboard */; };
 		4EFE558829F2603D0016C3BB /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE558729F2603D0016C3BB /* SplashViewController.swift */; };
+		4EFE558B29F284140016C3BB /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE558A29F284140016C3BB /* HTTPMethod.swift */; };
+		4EFE558D29F284420016C3BB /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE558C29F284420016C3BB /* APIError.swift */; };
+		4EFE558F29F284980016C3BB /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE558E29F284980016C3BB /* APIClient.swift */; };
+		4EFE559129F299DB0016C3BB /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE559029F299DB0016C3BB /* Services.swift */; };
+		4EFE559329F2B8C60016C3BB /* Endpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE559229F2B8C60016C3BB /* Endpoints.swift */; };
+		4EFE559729F2BB990016C3BB /* EndPointProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFE559629F2BB990016C3BB /* EndPointProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +28,12 @@
 		4EFE557F29F24E1E0016C3BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EFE558129F24E1E0016C3BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EFE558729F2603D0016C3BB /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		4EFE558A29F284140016C3BB /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
+		4EFE558C29F284420016C3BB /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		4EFE558E29F284980016C3BB /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4EFE559029F299DB0016C3BB /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		4EFE559229F2B8C60016C3BB /* Endpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoints.swift; sourceTree = "<group>"; };
+		4EFE559629F2BB990016C3BB /* EndPointProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPointProvider.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +66,7 @@
 		4EFE557229F24E190016C3BB /* Wisdomleaf-Task */ = {
 			isa = PBXGroup;
 			children = (
+				4EFE558929F27F5B0016C3BB /* Networking */,
 				4EFE557E29F24E1E0016C3BB /* LaunchScreen.storyboard */,
 				4EFE558729F2603D0016C3BB /* SplashViewController.swift */,
 				4EFE557329F24E190016C3BB /* AppDelegate.swift */,
@@ -62,6 +75,27 @@
 				4EFE558129F24E1E0016C3BB /* Info.plist */,
 			);
 			path = "Wisdomleaf-Task";
+			sourceTree = "<group>";
+		};
+		4EFE558929F27F5B0016C3BB /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				4EFE559529F2BB6B0016C3BB /* Services */,
+				4EFE558E29F284980016C3BB /* APIClient.swift */,
+				4EFE558C29F284420016C3BB /* APIError.swift */,
+				4EFE558A29F284140016C3BB /* HTTPMethod.swift */,
+				4EFE559629F2BB990016C3BB /* EndPointProvider.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		4EFE559529F2BB6B0016C3BB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4EFE559229F2B8C60016C3BB /* Endpoints.swift */,
+				4EFE559029F299DB0016C3BB /* Services.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +168,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EFE559729F2BB990016C3BB /* EndPointProvider.swift in Sources */,
+				4EFE558B29F284140016C3BB /* HTTPMethod.swift in Sources */,
 				4EFE558829F2603D0016C3BB /* SplashViewController.swift in Sources */,
 				4EFE557829F24E190016C3BB /* ViewController.swift in Sources */,
+				4EFE559129F299DB0016C3BB /* Services.swift in Sources */,
+				4EFE558D29F284420016C3BB /* APIError.swift in Sources */,
 				4EFE557429F24E190016C3BB /* AppDelegate.swift in Sources */,
+				4EFE559329F2B8C60016C3BB /* Endpoints.swift in Sources */,
+				4EFE558F29F284980016C3BB /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
