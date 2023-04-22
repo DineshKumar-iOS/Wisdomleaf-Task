@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// This is an enumeration that defines a set of errors that can occur while making network requests.
 enum ApiError: Error {
     case requestFailed(description: String)
     case invalidData

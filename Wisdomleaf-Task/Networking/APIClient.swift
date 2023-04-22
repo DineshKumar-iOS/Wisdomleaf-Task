@@ -7,10 +7,13 @@
 
 import Foundation
 
+/// This protocol defines the method required to fetch data from an endpoint using a provided response model and a completion handler.
 protocol NetworkService {
     func fetchData<M:Decodable>(endpoint: EndpointProvider, responseModel:M.Type, completionHandler: @escaping (Result<M?,ApiError>) -> Void)
 }
 
+/// This class implements the NetworkService protocol, which defines the method required to fetch data from an endpoint.
+/// The fetchData method makes a network request using the provided endpoint information and response model, and calls the completion handler with the result.
 final class APIClient: NetworkService {
     
     private let session: URLSession
@@ -60,6 +63,7 @@ final class APIClient: NetworkService {
     }
     
     
+    // Create a URL object from the provided endpoint information.
     private func makeURL(from endpoint: EndpointProvider) -> URL? {
         var urlComponents = URLComponents()
         urlComponents.scheme = endpoint.scheme

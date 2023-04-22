@@ -8,6 +8,7 @@ import UIKit
 import Kingfisher
 
 extension UIImageView {
+    // This function loads an image from the specified URL using Kingfisher and displays it in the image view.
     func loadKingfisherImage(url: String) {
         self.kf.cancelDownloadTask()
         self.kf.indicatorType = .activity
@@ -23,6 +24,10 @@ extension UIImageView {
 }
 
 extension CGFloat {
+    /*
+     - The purpose of these methods is to calculate the proportional height and width of a view or element based on the device's screen size.
+     - The base device size used for these calculations is the iPhone X, which has a screen resolution of 812 x 375 pixels.
+     */
     static func ratioHeight(_ height: CGFloat) -> CGFloat{
         return UIScreen.main.bounds.size.height * (height/812)
     }
@@ -33,7 +38,7 @@ extension CGFloat {
 }
 
 extension UIViewController {
-    
+    // This function displays an alert with the given title and message.
     func showAlert(title: String = "", message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let alertStyle: UIAlertAction.Style = title.isEmpty ? .destructive : .default

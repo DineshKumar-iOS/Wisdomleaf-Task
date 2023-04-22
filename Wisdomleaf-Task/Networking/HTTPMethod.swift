@@ -7,6 +7,7 @@
 
 import Foundation
 
+// This enumeration defines the various HTTP request methods that can be used for a network request.
 enum RequestMethod: String {
     case delete = "DELETE"
     case get = "GET"

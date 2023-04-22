@@ -7,7 +7,9 @@
 
 import Foundation
 
-//MARK: - Endpoints
+/// This enumeration represents the available endpoints that can be used for making network requests.
+/// - The use of an enumeration for endpoints provides a clear and organized way to represent the different available network requests
+/// - Additional cases can be added as needed to represent other endpoints, making it easier to manage and maintain the codebase.
 enum Endpoints {
     
     case getPhotosList(page: Int)
@@ -16,8 +18,12 @@ enum Endpoints {
 }
 
 
-
+//MARK: -
 extension Endpoints: EndpointProvider {
+    
+    var scheme: String {
+        return "https"
+    }
     
     var host: String {
         return "picsum.photos"
@@ -46,7 +52,7 @@ extension Endpoints: EndpointProvider {
             ]
         }
     }
-
+    
     var method: RequestMethod {
         switch self {
         case .getPhotosList:
