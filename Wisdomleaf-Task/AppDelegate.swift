@@ -31,7 +31,7 @@ extension AppDelegate {
         
         /// Delay of 5 seconds before switching to the main view controller
         DispatchQueue.main.asyncAfter(deadline: .now() + 5.0) {
-            self.window?.rootViewController = ViewController()
+            self.window?.rootViewController = UINavigationController(rootViewController: HomeViewController())
         }
     }
 }
