@@ -35,9 +35,7 @@ final class APIClient: NetworkService {
         }
         
         session.dataTask(with: request) { (data, response, error) in
-            
-            data?.printResponse(with: "\(url)", and: [:])
-            
+                        
             if let error = error {
                 completionHandler(.failure(.requestFailed(description: error.localizedDescription)))
                 return
@@ -67,6 +65,7 @@ final class APIClient: NetworkService {
         urlComponents.scheme = endpoint.scheme
         urlComponents.host = endpoint.host
         urlComponents.path = endpoint.path
+        urlComponents.queryItems = endpoint.queryItems
         return urlComponents.url
     }
 }

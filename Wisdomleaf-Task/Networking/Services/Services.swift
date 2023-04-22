@@ -17,8 +17,8 @@ class ServiceManager {
 
 class Services {
     
-    static func getPhotosList(completion: @escaping(Result<PicsumPhotosModel?, ApiError>) -> Void) {
-        ServiceManager.shared.fetchData(endpoint: Endpoints.getPhotosList, responseModel: PicsumPhotosModel.self) { result in
+    static func getPhotosList(page: Int, completion: @escaping(Result<[PicsumPhotosModel]?, ApiError>) -> Void) {
+        ServiceManager.shared.fetchData(endpoint: Endpoints.getPhotosList(page: page), responseModel: [PicsumPhotosModel].self) { result in
             completion(result)
         }
     }

@@ -10,7 +10,7 @@ import Foundation
 //MARK: - Endpoints
 enum Endpoints {
     
-    case getPhotosList
+    case getPhotosList(page: Int)
     //......
     
 }
@@ -26,7 +26,7 @@ extension Endpoints: EndpointProvider {
     var header: [String : String]? {
         switch self {
         case .getPhotosList:
-            return [:]
+            return nil
         }
     }
     
@@ -37,6 +37,16 @@ extension Endpoints: EndpointProvider {
         }
     }
     
+    var queryItems: [URLQueryItem]? {
+        switch self {
+        case .getPhotosList(let page):
+            return [
+                URLQueryItem(name: "page", value: "\(page)"),
+                URLQueryItem(name: "limit", value: "30")
+            ]
+        }
+    }
+
     var method: RequestMethod {
         switch self {
         case .getPhotosList:
