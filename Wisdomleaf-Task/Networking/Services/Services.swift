@@ -7,7 +7,7 @@
 
 import Foundation
 
-
+//Singleton
 class ServiceManager {
     static let shared: APIClient = APIClient(session: .shared)
     private init() {}

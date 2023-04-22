@@ -31,3 +31,13 @@ extension CGFloat {
         return UIScreen.main.bounds.size.width * (width/375)
     }
 }
+
+extension UIViewController {
+    
+    func showAlert(title: String = "", message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alertStyle: UIAlertAction.Style = title.isEmpty ? .destructive : .default
+        alert.addAction(UIAlertAction(title: "OK", style: alertStyle, handler: nil))
+        present(alert, animated: true, completion: nil)
+    }
+}

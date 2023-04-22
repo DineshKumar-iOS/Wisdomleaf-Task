@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
         control.addTarget(self, action: #selector(refresh), for: .valueChanged)
         return control
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -62,10 +62,15 @@ class HomeViewController: UIViewController {
     }
     
     @objc func refresh() {
-        currentPage = 1
-        dataSource = []
-        tableView.reloadData()
-        fetchPhotosList(page: currentPage)
+        /**
+         -----------------------------------------------
+         ***Pull to refresh will refresh the tableview. It means same data
+         -----------------------------------------------
+         Based on the above provide condition, reloading the tableview with the same data.
+         */
+        isLoading = true
+        loader.startAnimating()
+        reloadTableView()
     }
     
     private func fetchPhotosList(page: Int){
@@ -76,14 +81,10 @@ class HomeViewController: UIViewController {
             switch result {
             case .success(let dataModel):
                 self.dataSource.append(contentsOf: dataModel ?? [])
+                self.reloadTableView()
+            case .failure(let error):
                 DispatchQueue.main.async {
-                    self.tableView.reloadData()
-                    self.isLoading = false
-                    self.loader.stopAnimating()
-                    self.refreshControl.endRefreshing()
-                }
-            case .failure(_):
-                DispatchQueue.main.async {
+                    self.showAlert(message: error.customDescription)
                     self.isLoading = false
                     self.loader.stopAnimating()
                     self.refreshControl.endRefreshing()
@@ -92,7 +93,16 @@ class HomeViewController: UIViewController {
             }
         }
     }
-
+    
+    func reloadTableView(){
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+            self.isLoading = false
+            self.loader.stopAnimating()
+            self.refreshControl.endRefreshing()
+        }
+    }
+    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -113,7 +123,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         cell.didTapCheckbox = { [weak self] isChecked in
             self?.dataSource[indexPath.row].isChecked = isChecked
         }
-
         return cell
     }
     
@@ -125,6 +134,15 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             currentPage += 1
             fetchPhotosList(page: currentPage)
         default: break
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let isChecked = dataSource[indexPath.row].isChecked ?? false
+        if isChecked {
+            showAlert(title: "Item is Checked", message: "The author of this image (ID: \(dataSource[indexPath.row].id ?? "")) is \(dataSource[indexPath.row].author ?? "").")
+        } else {
+            showAlert(message: "This item is not checked")
         }
     }
     
